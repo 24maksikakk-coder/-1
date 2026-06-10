@@ -1,0 +1,33 @@
+// 06-java/Calculator.java
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        System.out.println("=== Java Calculator ===");
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("First number: ");
+            double a = sc.nextDouble();
+            System.out.print("Operator (+, -, *, /): ");
+            String op = sc.next();
+            System.out.print("Second number: ");
+            double b = sc.nextDouble();
+            double result;
+            switch (op) {
+                case "+": result = a + b; break;
+                case "-": result = a - b; break;
+                case "*": result = a * b; break;
+                case "/":
+                    if (b == 0) throw new ArithmeticException("division by zero");
+                    result = a / b;
+                    break;
+                default: throw new IllegalArgumentException("invalid operator");
+            }
+            System.out.println("Result: " + result);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            sc.close();
+        }
+    }
+}

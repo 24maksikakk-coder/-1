@@ -1,0 +1,26 @@
+// 07-csharp/Program.cs
+using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("=== C# Calculator ===");
+        try {
+            Console.Write("First number: ");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("Operator (+, -, *, /): ");
+            string op = Console.ReadLine();
+            Console.Write("Second number: ");
+            double b = double.Parse(Console.ReadLine());
+            double result = op switch {
+                "+" => a + b,
+                "-" => a - b,
+                "*" => a * b,
+                "/" when b != 0 => a / b,
+                _ => throw new Exception("invalid operator or division by zero")
+            };
+            Console.WriteLine($"Result: {result}");
+        } catch (Exception ex) {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}

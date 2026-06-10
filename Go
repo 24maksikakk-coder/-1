@@ -1,0 +1,35 @@
+// 03-go/calculator.go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("=== Go Calculator ===")
+    var a, b float64
+    var op string
+    fmt.Print("First number: ")
+    fmt.Scan(&a)
+    fmt.Print("Operator (+, -, *, /): ")
+    fmt.Scan(&op)
+    fmt.Print("Second number: ")
+    fmt.Scan(&b)
+    var result float64
+    switch op {
+    case "+":
+        result = a + b
+    case "-":
+        result = a - b
+    case "*":
+        result = a * b
+    case "/":
+        if b == 0 {
+            fmt.Println("Error: division by zero")
+            return
+        }
+        result = a / b
+    default:
+        fmt.Println("Error: invalid operator")
+        return
+    }
+    fmt.Printf("Result: %v\n", result)
+}
